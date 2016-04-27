@@ -1,0 +1,15 @@
+./fm --flagfile=params.conf --train=../data/train.txt --test=../data/test.txt --model=model.txt --method=lr
+./fm --test=../data/test.txt --model=model.txt --predict=pred.txt --mode=1 --method=lr 
+cat pred.txt | ./fm --method=auc
+
+feature      drop    auc          logloss
+lr-nocross:          0.6235       0.4397    #
+lr-cross:            0.6241       0.4427
+lr-cross-4:          0.6240       0.4426
+lr-cross:    0.2     0.6261       0.4385
+lr-cross-4:  0.2     0.6267       0.4381    *
+fm-4                 0.6312       0.4377
+fm:                  0.6315       0.4376
+fm-4         0.2     0.6288       0.4372
+fm:          0.2     0.6323       0.4368    *
+
